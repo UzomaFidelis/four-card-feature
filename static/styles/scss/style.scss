@@ -1,0 +1,356 @@
+@use "variables" as vars;
+
+/* css reset */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/* end of css reset */
+@mixin font($path, $wght) {
+  @font-face {
+    font-family: Poppins;
+    src: url($path);
+    font-weight: $wght;
+  }
+}
+
+@mixin card-trim($border-top-color, $icon-path) {
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: $border-top-color;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: {
+      image: url($icon-path);
+      repeat: no-repeat;
+      size: 100% 100%;
+    }
+    width: 3.4rem;
+    height: 3.4rem;
+    bottom: 1.8rem;
+    right: 1.88rem;
+  }
+}
+
+@mixin card-icon-pos-lg {
+  &::after {
+    width: 3.97rem;
+    height: 3.97rem;
+    bottom: 2.05rem;
+    right: 1.98rem;
+  }
+}
+
+@include font("../../fonts/Poppins-ExtraLight.ttf", 200);
+@include font("../../fonts/Poppins-Regular.ttf", 400);
+@include font("../../fonts/Poppins-SemiBold.ttf", 600);
+
+body {
+  font-family: Poppins, sans-serif;
+}
+
+.content {
+  min-height: 100vh;
+
+  &__info {
+    padding: 1.34rem 0;
+    font-size: 0.95rem;
+    line-height: 1.56rem;
+
+    &_grey {
+      color: vars.$grayish-blue;
+    }
+  }
+
+  &__header {
+    padding: 5.6rem 1.974rem 0;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 1.525rem;
+    
+    &_light {
+      font-weight: 200;
+    }
+
+    &_bold {
+      font-weight: 600;
+    }
+
+    &_color_dark-blue {
+      color: vars.$very-dark-blue;
+    }
+
+    &_part {
+      display: block;
+      margin-top: 0.8rem;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  padding: 3.3rem 1.96rem 1rem;
+  align-items: center;
+
+  &__container {
+    width: 100%;
+  }
+
+  //   adding unique card styles
+  &-left__card {
+    @include card-trim(vars.$cyan, "../../../images/icon-supervisor.svg");
+  }
+
+  &-right__card {
+    @include card-trim(vars.$blue, "../../../images/icon-calculator.svg");
+  }
+
+  &-middle__top {
+    @include card-trim(vars.$red, "../../../images/icon-team-builder.svg");
+  }
+
+  &-middle__bottom {
+    @include card-trim(vars.$orange, "../../../images/icon-karma.svg");
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1.58rem;
+  box-shadow: 0 7px 20px 0.01rem rgba(vars.$blue, 0.2),
+    0 12px 20px 0.1rem rgba(vars.$grayish-blue, 0.2);
+
+  &__body {
+    width: 100%;
+    height: 13.6rem;
+    padding: 1.75rem 1.83rem;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.45rem;
+
+    &_bold {
+      font-weight: 600;
+    }
+  }
+
+  &__content {
+    font-size: 0.83rem;
+    line-height: 1.45rem;
+
+    &_grey {
+      color: vars.$grayish-blue;
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  .content {
+    &__header {
+      padding: 5.5rem 1.974rem 0;
+    }
+    &__title {
+      font-size: 2.28rem;
+
+      &_part {
+        margin-top: 0.9rem;
+      }
+    }
+    &__info {
+      width: 33rem;
+      margin: auto;
+      font-size: 0.948rem;
+      padding: 1.45rem 0 1.34rem;
+    }
+  }
+
+  .cards {
+    flex-direction: row;
+    padding: 2.6rem 10.27rem 1rem;
+    gap: 1.6rem;
+
+    &__container {
+      padding: 0 0.1rem;
+    }
+
+    &-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 1.9rem;
+    }
+
+    &-left__card {
+      @include card-icon-pos-lg;
+    }
+  
+    &-right__card {
+      @include card-icon-pos-lg;
+    }
+  
+    &-middle__top {
+      @include card-icon-pos-lg;
+    }
+  
+    &-middle__bottom {
+      @include card-icon-pos-lg;
+    }
+  }
+  .card {
+    margin-bottom: 0;
+
+    &__body {
+      height: 15.4rem;
+      padding: 2.05rem 1.93rem;
+    }
+
+    &__title {
+      margin-bottom: 0.8rem;
+    }
+  }
+}
