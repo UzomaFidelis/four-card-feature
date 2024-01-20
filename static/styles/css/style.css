@@ -276,6 +276,7 @@ body {
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 1.58rem;
+  background-color: white;
   box-shadow: 0 7px 20px 0.01rem rgba(84, 158, 242, 0.2), 0 12px 20px 0.1rem rgba(163, 165, 174, 0.2);
 }
 .card__body {
