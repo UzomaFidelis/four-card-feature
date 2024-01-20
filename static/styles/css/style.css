@@ -154,6 +154,7 @@ table {
 }
 body {
   font-family: Poppins, sans-serif;
+  background-color: hsl(0, 0%, 98%);
 }
 
 .content {
@@ -288,6 +289,9 @@ body {
 }
 .card__title_bold {
   font-weight: 600;
+}
+.card__title_color_dark-blue {
+  color: hsl(234, 12%, 34%);
 }
 .card__content {
   font-size: 0.83rem;

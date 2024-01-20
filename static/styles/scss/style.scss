@@ -187,6 +187,7 @@ table {
 
 body {
   font-family: Poppins, sans-serif;
+  background-color: vars.$very-light-gray;
 }
 
 .content {
@@ -277,6 +278,10 @@ body {
 
     &_bold {
       font-weight: 600;
+    }
+
+    &_color_dark-blue {
+      color: vars.$very-dark-blue;
     }
   }
 
